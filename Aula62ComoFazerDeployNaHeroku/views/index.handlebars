@@ -1,0 +1,34 @@
+<div class="jumbotron">
+  <h1 class="display-4">Bem vindo ao Blog do Denis!</h1>
+  <p class="lead">Esse é o blog do Denis.</p>
+  <hr class="my-4">
+  <p>Como eu já disse...esse é o blog do Denis.</p>
+{{#if user}}
+{{else}}
+    <a class="btn btn-primary btn-lg" href="/usuarios/registro" role="button">Crie uma conta</a>
+{{/if}}
+</div>
+
+<hr>
+<h2>Postagens recentes: </h2>
+
+{{#each pos}}
+    <div class="card mt-2 border-dark">
+        <div class="card-header">
+            <h3>{{titulo}}</h3>
+            <p>{{descricao}}</p>
+            <a href="/postagem/{{slug}}"><button class="btn btn-success">Leia mais</button></a>
+        </div>
+        <div class="card-body">
+            <small><b>Autor: </b> {{autor.nome}}</small>
+            <br>
+            <small><b>Categoria: </b> {{categoria.nome}}</small>
+            <br>
+            <small><b>Data de publicação: </b> {{date}}</small>            
+        </div>
+    </div>
+{{else}}
+    <div class="mt-2">Nenhuma postagem publicada</div>
+{{/each}}
+
+<p class="mb-4"></div>

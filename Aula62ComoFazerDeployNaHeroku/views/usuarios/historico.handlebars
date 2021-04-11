@@ -1,0 +1,27 @@
+<h2>Histórico:</h2>
+<hr>
+
+{{#each comentarios}}
+<div class="card mt-2 border-dark">
+    <div class="card-header">
+        <b>Comentário em</b> <h3 style="display:inline">{{postagem.titulo}}</h3>
+        <br>
+        <small><b>Autor: </b>{{autor.nome}}</small>
+        <br>
+        <small><b>Data de publicação: </b>{{date}}</small>   
+    </div>
+    <div class="card-body">
+        {{conteudo}}   
+        <br>
+        <a href="/postagem/{{postagem.slug}}"><button class="btn btn-success mt-4">Leia mais</button></a>
+   </div>
+</div>  
+{{else}}
+<div class="card mt-2">
+    <div class="card-body">
+        <div>Nenhum histórico</div>
+   </div>
+</div> 
+{{/each}}
+
+<div class="mb-4"></div>

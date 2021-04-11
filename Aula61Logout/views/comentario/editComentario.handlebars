@@ -1,0 +1,22 @@
+{{#each e}}
+    <div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+
+<h2>Editar comentário:</h2>
+
+<div class="card mt-2">
+    <div class="card-body">
+        <form action="/comentarios/edit" method="post">
+
+            <input type="hidden" name="id" value ="{{comentario._id}}">
+            <input type="hidden" name="slug" value ="{{comentario.postagem.slug}}">
+
+            <label for="conteudo">Comentário: </label>
+            <textarea name="conteudo" style="resize:none" rows="3" placeholder="Comentário" class="form-control" required>{{comentario.conteudo}}</textarea>
+            
+            <button  type="submit" class="btn btn-success mt-4">Responder</button>
+        </form>
+    </div>
+</div>

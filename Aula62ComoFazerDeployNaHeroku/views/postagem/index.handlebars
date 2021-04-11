@@ -1,0 +1,72 @@
+{{#each e}}
+    <div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+<div class="card border-dark">
+    <div class="card-header">
+        <h1>{{pos.titulo}}</h1>
+        <small><b>Autor: </b> {{pos.autor.nome}}</small>
+        <br>
+        <small><b>Data de publicação: </b>{{pos.date}}</small>
+    </div>
+    <div class="card-body">
+        {{pos.conteudo}}
+    </div>
+</div>
+
+{{#each comentarios}}
+        {{#eif autor._id ../user._id ../user.eAdmin}}
+        <div class="mt-2 card border-dark">
+            <div class="card-header">
+                <small><b>Autor: </b>{{autor.nome}}</small>
+                <br>
+                <small><b>Data de publicação: </b>{{date}}</small>   
+            </div>  
+            <div class="card-body">
+                {{conteudo}}  
+                <br>
+            </div>
+            <div class="card-footer">
+                <a href="/comentarios/edit/{{_id}}"><button class="btn btn-success">Editar</button></a>
+                <a href="/comentarios/delete/{{_id}}"><button class="btn btn-danger ml-1">Deletar</button></a>
+            </div>
+        </div>  
+        {{else}}
+        <div class="card mt-2 border-dark">
+            <div class="card-header">
+                <small><b>Autor: </b>{{autor.nome}}</small>
+                <br>
+                <small><b>Data de publicação: </b>{{date}}</small>   
+            </div>     
+            <div class="card-body">
+                {{conteudo}}  
+            </div>
+        </div>  
+        {{/eif}}
+ 
+{{else}}
+<div class="card mt-2">
+    <div class="card-body">
+        <div>Nenhum comentário</div>
+   </div>
+</div> 
+{{/each}}
+ 
+<div class="card mt-2">
+    <div class="card-body">
+        <form action="/comentarios/novo" method="post">
+
+            <input type="hidden" name="slug" value ="{{pos.slug}}">
+            <input type="hidden" name="autor" value ="{{user._id}}">
+            <input type="hidden" name="postagem" value ="{{pos._id}}">
+
+            <label for="conteudo">Comentário: </label>
+            <textarea name="conteudo" style="resize:none" rows="3" placeholder="Comentário" class="form-control" required></textarea>
+            
+            <button  type="submit" class="btn btn-success mt-4">Responder</button>
+        </form>
+    </div>
+</div>
+
+<p class="mb-4"></div>

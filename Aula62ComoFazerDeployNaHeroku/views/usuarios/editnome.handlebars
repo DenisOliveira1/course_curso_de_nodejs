@@ -1,0 +1,21 @@
+{{#each e}}
+    <div class="alert alert-danger">{{texto}}</div>
+{{else}}
+
+{{/each}}
+
+<h2>Alterar nome:</h2>
+
+<div class="card mt-4">
+    <div class="card-body">
+        <form action="/usuarios/nome/edit/{{user._id}}" method="POST" >
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" class="form-control" required>
+            <label for="novonome">Novo nome:</label>
+            <input type="text" name="novonome" class="form-control" required>
+
+           <button type="submit" class="btn btn-success mt-4">Alterar</button>
+        </form>
+
+    </div>
+</div>
